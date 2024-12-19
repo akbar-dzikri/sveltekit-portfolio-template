@@ -11,8 +11,6 @@ local_backend: true
 
 # site_url: https://your-site-url.com # Replace with your site URL
 
-publish_mode: editorial_workflow
-
 media_folder: static/uploads # Folder where media files are stored
 public_folder: /uploads # Folder where media files are accessible
 
@@ -20,12 +18,11 @@ collections:
   - name: 'blogs' # The name of the collection
     label: 'Blog'
     label_singular: 'Post'
-    folder: 'src/content/blog' # Path to the folder where blog posts are stored
+    folder: 'src/lib/content/blog' # Path to the folder where blog posts are stored
     create: true # Allow users to create new blog posts
     slug: '{{slug}}' # URL slug for the blog post
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Author', name: 'author', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
       - { label: 'Date', name: 'date', widget: 'datetime' }
@@ -34,8 +31,13 @@ collections:
 
   - name: 'settings' # The name of the settings collection
     label: 'Settings'
-    folder: 'src/content/settings' # Path to the settings file
+    extension: 'json'
+    delete: false
+    folder: 'src/lib/content/setting' # Path to the settings file
+    editor:
+      preview: false
     fields:
+      - { label: 'Site Title', name: 'title', widget: 'string' }
       - { label: 'Name', name: 'name', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - {
@@ -53,12 +55,20 @@ collections:
   - name: 'projects' # The name of the projects collection
     label: 'Projects'
     label_singular: 'Project'
-    folder: 'src/content/projects' # Path to the projects folder
+    folder: 'src/lib/content/project' # Path to the projects folder
     create: true
     slug: '{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Link', name: 'link', widget: 'string' }
       - { label: 'Image', name: 'image', widget: 'image' }
-      - { label: 'Date', name: 'date', widget: 'datetime' } # Optional, if you want to track when the project was created
+      - {
+          label: 'Tags',
+          name: 'tags',
+          widget: 'list',
+          field: { label: 'Tag', name: 'tag', widget: 'string' }
+        }
+      - { label: 'Link', name: 'link', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Featured', name: 'featured', widget: 'boolean' }
+  # Optional, if you want to track when the project was created
