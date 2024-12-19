@@ -1,0 +1,64 @@
+backend:
+  name: github
+  repo: akbar-dzikri/sveltekit-portfolio-template # Replace with your GitHub repo
+  branch: main
+  # repo: your-github-username/your-repo-name # Replace with your GitHub repo
+  # squash_merges: true
+  # open_authoring: true
+  # branch: main
+
+local_backend: true
+
+# site_url: https://your-site-url.com # Replace with your site URL
+
+publish_mode: editorial_workflow
+
+media_folder: static/uploads # Folder where media files are stored
+public_folder: /uploads # Folder where media files are accessible
+
+collections:
+  - name: 'blogs' # The name of the collection
+    label: 'Blog'
+    label_singular: 'Post'
+    folder: 'src/content/blog' # Path to the folder where blog posts are stored
+    create: true # Allow users to create new blog posts
+    slug: '{{slug}}' # URL slug for the blog post
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Author', name: 'author', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Featured', name: 'featured', widget: 'boolean' }
+
+  - name: 'settings' # The name of the settings collection
+    label: 'Settings'
+    folder: 'src/content/settings' # Path to the settings file
+    fields:
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - {
+          label: 'Skills',
+          name: 'skills',
+          widget: 'list',
+          fields:
+            [
+              { label: 'Skill Name', name: 'name', widget: 'string' },
+              { label: 'Percentage', name: 'percentage', widget: 'number' },
+              { label: 'Description', name: 'description', widget: 'text' }
+            ]
+        }
+
+  - name: 'projects' # The name of the projects collection
+    label: 'Projects'
+    label_singular: 'Project'
+    folder: 'src/content/projects' # Path to the projects folder
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Link', name: 'link', widget: 'string' }
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Date', name: 'date', widget: 'datetime' } # Optional, if you want to track when the project was created

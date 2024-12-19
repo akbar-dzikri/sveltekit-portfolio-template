@@ -1,0 +1,14 @@
+{
+    "title": "Portfolio Saya",
+    "description": "Ini adalah portofolio saya sebagai pengembang web.",
+    
+    "name": "Nama Saya",
+    "skills": [
+      {"name": "HTML", "percentage": 90, "description": "Mengembangkan website dengan semantic dan struktur HTML yang baik."},
+      {"name": "CSS", "percentage": 80, "description": "Mengembangkan desain website yang menarik dan responsif."},
+      {"name": "JavaScript", "percentage": 70, "description": "Mengembangkan website dengan fitur interaktif dan animasi."},
+      {"name": "SvelteKit", "percentage": 85, "description": "Mengembangkan website dengan framework Svelte yang cepat dan mudah."}
+    ]
+    
+  }
+  
